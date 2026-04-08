@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Auto Test on Save",
+  "description": "Roda testes relacionados quando arquivos de código são salvos",
+  "version": "1",
+  "when": {
+    "type": "fileSaved",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.py"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Run the related unit tests for the saved file and report any failures."
+  }
+}

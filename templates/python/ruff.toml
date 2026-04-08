@@ -1,0 +1,66 @@
+# Ruff - Linter + Formatter para Python
+# Docs: https://docs.astral.sh/ruff/
+# Profile: RECOMMENDED (ativar strict descomentando abaixo)
+
+[lint]
+# === RECOMMENDED (padrao) ===
+select = [
+  "E",      # pycodestyle errors
+  "W",      # pycodestyle warnings
+  "F",      # pyflakes
+  "I",      # isort
+  "N",      # pep8-naming
+  "UP",     # pyupgrade
+  "B",      # flake8-bugbear
+  "S",      # flake8-bandit (seguranca!)
+  "A",      # flake8-builtins
+  "C4",     # flake8-comprehensions
+  "DTZ",    # flake8-datetimez
+  "T10",    # flake8-debugger (nao committar breakpoint)
+  "ISC",    # flake8-implicit-str-concat
+  "PIE",    # flake8-pie
+  "PT",     # flake8-pytest-style
+  "RET",    # flake8-return
+  "SIM",    # flake8-simplify
+  "TCH",    # flake8-type-checking
+  "RUF",    # ruff-specific rules
+]
+
+# === STRICT (descomentar para ativar) ===
+# select = [
+#   "ALL",  # Todas as regras
+# ]
+
+ignore = [
+  "E501",   # line-too-long (formatter cuida)
+  "S101",   # assert (permitido em testes)
+  "B008",   # function-call-in-default-argument (FastAPI Depends)
+]
+
+[lint.per-file-ignores]
+"tests/**/*.py" = [
+  "S101",   # assert permitido em testes
+  "S106",   # hardcoded passwords em testes
+  "D",      # docstrings nao obrigatorias em testes
+]
+
+[lint.isort]
+known-first-party = ["app", "src"]
+
+[lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Path"]
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.pylint]
+max-args = 5
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+# Configuracao geral
+target-version = "py312"
+line-length = 88

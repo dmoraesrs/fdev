@@ -1,0 +1,43 @@
+# ===== AMBIENTE =====
+.env
+.env.*
+!.env.example
+
+# ===== DEPENDENCIAS =====
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+vendor/
+
+# ===== BUILD =====
+dist/
+build/
+out/
+.next/
+*.egg-info/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== TESTES =====
+coverage/
+htmlcov/
+.coverage
+*.lcov
+
+# ===== SECRETS =====
+*.pem
+*.key
+*.p12
+credentials.json
+service-account.json

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Security Check on Sensitive Files",
+  "description": "Verifica se arquivos potencialmente sensíveis estão no .gitignore",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["**/*.env*", "**/secret*", "**/credential*", "**/*.pem", "**/*.key"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A potentially sensitive file was created. Check if it's in .gitignore and doesn't contain hardcoded secrets. If it's not in .gitignore, add it."
+  }
+}

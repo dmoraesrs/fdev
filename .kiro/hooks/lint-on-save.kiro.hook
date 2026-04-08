@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Lint on Save",
+  "description": "Verifica lint e formatação ao salvar arquivos",
+  "version": "1",
+  "when": {
+    "type": "fileSaved",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.py"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the saved file for linting issues and formatting problems. Fix any issues found."
+  }
+}

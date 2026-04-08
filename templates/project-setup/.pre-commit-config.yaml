@@ -1,0 +1,76 @@
+# Pre-commit hooks - Template FDEV
+# Instalar: pre-commit install && pre-commit install --hook-type commit-msg
+# Rodar: pre-commit run --all-files
+
+repos:
+  # ===== FORMATACAO GERAL =====
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: no-commit-to-branch
+        args: ['--branch', 'main', '--branch', 'master']
+
+  # ===== SECRET SCANNING =====
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: package-lock\.json|yarn\.lock|pnpm-lock\.yaml
+
+  # ===== CONVENTIONAL COMMITS =====
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.6.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [feat, fix, docs, style, refactor, test, chore, ci, perf, revert]
+
+  # ===== PYTHON (descomentar se usar Python) =====
+  # - repo: https://github.com/astral-sh/ruff-pre-commit
+  #   rev: v0.7.0
+  #   hooks:
+  #     - id: ruff
+  #       args: [--fix]
+  #     - id: ruff-format
+
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.13.0
+  #   hooks:
+  #     - id: mypy
+
+  # ===== JAVASCRIPT/TYPESCRIPT (descomentar se usar JS/TS) =====
+  # - repo: https://github.com/pre-commit/mirrors-eslint
+  #   rev: v9.13.0
+  #   hooks:
+  #     - id: eslint
+  #       files: \.(js|jsx|ts|tsx)$
+
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v4.0.0-alpha.8
+  #   hooks:
+  #     - id: prettier
+  #       files: \.(js|jsx|ts|tsx|css|md|json|yaml|yml)$
+
+  # ===== DOCKER (descomentar se usar Docker) =====
+  # - repo: https://github.com/hadolint/hadolint
+  #   rev: v2.12.0
+  #   hooks:
+  #     - id: hadolint
+
+  # ===== TERRAFORM (descomentar se usar Terraform) =====
+  # - repo: https://github.com/antonbabenko/pre-commit-terraform
+  #   rev: v1.96.1
+  #   hooks:
+  #     - id: terraform_fmt
+  #     - id: terraform_validate
+  #     - id: terraform_tflint

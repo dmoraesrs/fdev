@@ -1,0 +1,23 @@
+# ===== GERADOS/LOCAIS =====
+docs/
+
+# ===== CONFIGS LOCAIS =====
+.secrets.baseline
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== DEPENDENCIAS =====
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
